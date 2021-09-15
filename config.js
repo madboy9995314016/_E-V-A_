@@ -9,14 +9,14 @@ global.APIs = { // API Prefix
   neoxr: 'neoxr',
   nrtm: 'https://nurutomo.herokuapp.com',
   pencarikode: 'APIKEY',
-  xteam: 'https://api.xteam.xyz',
-  zahir: 'https://zahirr-web.herokuapp.com',
-  zekais: 'http://zekais-api.herokuapp.com',
-  zeks: 'https://api.zeks.xyz',
-  vhtear: 'https://api.vhtear.com',
-  lolhum: 'https://api.lolhuman.xyz',
-  fxc7: 'https://fxc7-api.herokuapp.com',
-  aqul: 'https://api.justaqul.xyz'
+  xteam: '65654c74a7169de8',
+  zahir: 'zahirgans',
+  zekais: 'If7IyniS',
+  zeks: 'SUcKEWdDpYjtj2q045KNQCoDyCe',
+  vhtear: 'AW62938KK46292gJ73639h',
+  lolhum: 'ab7df38f1d53e257d50a575b',
+  fxc7: 'pnj8NAJb',
+  aqul: 'xinzbot'
 
 }
 global.APIKeys = { // APIKey nya disini
