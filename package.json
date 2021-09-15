@@ -1,7 +1,7 @@
 {
-  "name": "harunobot",
+  "name": "Eva",
   "version": "1.1.2",
-  "description": "WhatsApp Bot Ringan",
+  "description": "Lightweight WhatsApp Bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js --self",
@@ -9,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ariffb25/stikerinbot.git"
+    "url": "git+https://github.com/SudoAnirudh/_E-V-A_.git"
   },
   "keywords": [
     "whatsapp-bot"
   ],
-  "author": "Fadli",
+  "author": "Anirudh",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ariffb25/stikerinbot/issues"
+    "url": "https://github.com/SudoAnirudh/_E-V-A_/issues"
   },
-  "homepage": "https://github.com/ariffb25/stikerinbot",
+  "homepage": "https://github.com/SudoAnirudh/_E-V-A_",
   "dependencies": {
     "@adiwajshing/baileys": "^3.5.2",
     "awesome-phonenumber": "^2.54.0",

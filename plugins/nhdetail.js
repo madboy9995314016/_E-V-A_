@@ -26,4 +26,4 @@ handler.tags = ['internet']
 handler.help = ['nh <code>']
 handler.nsfw = true
 module.exports = handler
-//Haruno
+//Eva

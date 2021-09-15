@@ -7,19 +7,10 @@ let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
 ┌─〔 %me 〕
-├ Hai, %name!
-│
-├ Tersisa *%limit Limit*
-├ Role *%role*
-├ Level *%level (%exp / %maxexp)* [%xp4levelup]
-├ %totalexp XP secara Total
-│ 
-├ Tanggal: *%week %weton, %date*
-├ Tanggal Islam: *%dateIslamic*
-├ Waktu: *%time*
-│
+├ Hai, %name! 
+├ Date: *%week %weton, %date*
+├ Time: *%time*
 ├ Uptime: *%uptime (%muptime)*
-├ Database: %rtotalreg dari %totalreg
 └────
 %readmore`.trimStart(),
   header: '┌─〔 %category 〕',
@@ -58,7 +49,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     'audio': 'Pengubah Suara',
     'jadibot': 'Jadi Bot',
     'info': 'Info',
-    '': 'Tanpa Kategori',
+    '': 'No Category',
   }
   if (teks == 'game') tags = {
     'game': 'Game'
@@ -187,14 +178,14 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
         "listMessage": {
           "title": `${ucapan()}, ${name}`.trim(),
-          "description": "© Haruno",
-          "buttonText": "Klik Disini",
+          "description": "© Eva",
+          "buttonText": "Click here",
           "listType": "SINGLE_SELECT",
           "sections": [
             {
               "rows": [
                 {
-                  "title": `Semua Perintah`,
+                  "title": `All Commands`,
                   "description": "",
                   "rowId": ".? all"
                 }, {
@@ -212,9 +203,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "description": "",
                   "rowId": ".? stiker"
                 }, {
-                  "title": "Kerang Ajaib",
+                  "title": "MagicShell",
                   "description": "",
-                  "rowId": ".? kerangajaib"
+                  "rowId": ".? MagicShell"
                 }, {
                   "title": "Quotes",
                   "description": "",
@@ -279,10 +270,6 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "title": "Info",
                   "description": "",
                   "rowId": ".? info"
-                }, {
-                  "title": "Tanpa Kategori",
-                  "description": "",
-                  "rowId": ".? tanpakategori"
                 }, {
                   "title": "Owner",
                   "description": "",
@@ -369,15 +356,15 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       exp: exp - min,
       maxexp: xp,
       totalexp: exp,
-      xp4levelup: max - exp <= 0 ? `Siap untuk *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
+      xp4levelup: max - exp <= 0 ? `Ready for *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
       level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send2ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), watermark, 'Pemilik Bot', '.owner', 'Donasi', '.donasi', m)
+    await conn.send2ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), watermark, 'Owner', '.owner', m)
   } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    conn.reply(m.chat, 'Sorry, the menu is in error', m)
     throw e
   }
 }
@@ -408,19 +395,19 @@ function clockString(ms) {
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 function ucapan() {
-  const time = moment.tz('Asia/Jakarta').format('HH')
-  res = "Selamat dinihari"
+  const time = moment.tz('Asia/Kolkata').format('HH')
+  res = "Good morning"
   if (time >= 4) {
-    res = "Selamat pagi"
+    res = "Good morning"
   }
   if (time > 10) {
-    res = "Selamat siang"
+    res = "good afternoon"
   }
   if (time >= 15) {
-    res = "Selamat sore"
+    res = "good afternoon"
   }
   if (time >= 18) {
-    res = "Selamat malam"
+    res = "Good night"
   }
   return res
 }
