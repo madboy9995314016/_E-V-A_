@@ -12,8 +12,8 @@ handler.all = async function (m) {
     await this.sendButton(m.chat, `
 Hai, ${ucapan()}
 
-${user.banned ? 'youre banned' : 'Im Eva, one of the Whatsapp Bots. please dont spam/call/ask to save to this number. Can I help you?'}
-`.trim(), watermark, user.banned ? 'Bot Owner' : 'Menu', user.banned ? ',owner' : 'menu', m)
+${user.banned ? 'you are banned' : 'Is there anything I can help you with?'}
+`.trim(), '© stikerin', user.banned ? 'Owner' : 'Menu', user.banned ? ',owner' : ',?', m)
     user.pc = new Date * 1
 }
 
@@ -28,10 +28,10 @@ function ucapan() {
         res = "Good afternoon"
     }
     if (time >= 15) {
-        res = "Good afternoon"
+        res = "Good Evening"
     }
     if (time >= 18) {
-        res = "Good night"
+        res = "Good Night"
     }
     return res
 }
