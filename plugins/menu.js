@@ -11,7 +11,6 @@ const defaultMenu = {
 ├ Date: *%week %weton, %date*
 ├ Time: *%time*
 │
-├ Uptime: *%uptime (%muptime)*
 ├ Github:
 ├ %github
 └────
@@ -20,7 +19,7 @@ const defaultMenu = {
   body: '├ %cmd',
   footer: '└────\n',
   after: `
-*%npmname@^%version*
+*%npmname@*
 ${'```%npmdesc```'}
 `,
 }
