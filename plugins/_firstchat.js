@@ -13,7 +13,7 @@ handler.all = async function (m) {
 Hai, ${ucapan()}
 
 ${user.banned ? 'youre banned' : 'Im Eva, one of the Whatsapp Bots. please dont spam/call/ask to save to this number. Can I help you?'}
-`.trim(), watermark, user.banned ? 'Bot Owner' : 'Menu', user.banned ? ',owner' : ',?', m)
+`.trim(), watermark, user.banned ? 'Bot Owner' : 'Menu', user.banned ? ',owner' : 'menu', m)
     user.pc = new Date * 1
 }
 
