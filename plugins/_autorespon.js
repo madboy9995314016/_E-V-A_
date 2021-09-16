@@ -14,12 +14,12 @@ handler.all = async function (m, { isBlocked }) {
     try {
         if (m.mentionedJid.includes(this.user.jid) && m.isGroup) {
             await this.send2Button(m.chat,
-                isBanned ? 'Eva is sleeping' : banned ? 'you are banned' : 'Eva is here',
-                watermark,
-                isBanned ? 'Unban' : banned ? 'Bot Owner' : 'Menu',
+                isBanned ? 'stikerin tidak aktif' : banned ? 'kamu dibanned' : 'stikerin disini',
+                '© stikerin',
+                isBanned ? 'Unban' : banned ? 'Pemilik Bot' : 'Menu',
                 isBanned ? '.unban' : banned ? '.owner' : '.?',
-                m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'Owner',
-                m.isGroup ? '.ban' : isBanned ? '.unban' : '.owner', m)
+                m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'Donasi',
+                m.isGroup ? '.ban' : isBanned ? '.unban' : '.donasi', m)
         }
     } catch (e) {
         return
@@ -27,19 +27,20 @@ handler.all = async function (m, { isBlocked }) {
 
     // ketika ada yang invite/kirim link grup di chat pribadi
     if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Buka tautan ini')) && !m.isBaileys && !m.isGroup) {
-        this.sendButton(m.chat, `┌〔 Invite Bots to Group 〕
-├ 3 Days / FREE
-├ 7 Days / FREE
-├ 30 Days / FREE
+        this.sendButton(m.chat, `┌〔 Undang Bot ke Grup 〕
+├ 7 Hari / Rp 5,000
+├ 30 Hari / Rp 10,000
 └────
-`.trim(), watermark, 'Bot Owner', ',owner', m)
+
+https://github.com/ariffb25/stikerinbot
+`.trim(), '© stikerin', 'Pemilik Bot', ',owner', m)
     }
 
     // salam
-    let reg = /(Greetings|Peace be upon you|Peace be upon you)/i
+    let reg = /(ass?alam|اَلسَّلاَمُ عَلَيْكُمْ|السلام عليکم)/i
     let isSalam = reg.exec(m.text)
     if (isSalam && !m.fromMe) {
-        m.reply(`Peace be upon you and God's mercy and blessings\n_wa\'`)
+        m.reply(`وَعَلَيْكُمْ السَّلاَمُ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ\n_wa\'alaikumussalam wr.wb._`)
     }
 
     // backup db
@@ -62,7 +63,7 @@ handler.all = async function (m, { isBlocked }) {
     if (new Date() * 1 - setting.status > 1000) {
         let _uptime = process.uptime() * 1000
         let uptime = clockString(_uptime)
-        // await this.setStatus(`Aktif selama ${uptime} | Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} | Haruno bot oleh Fadli`).catch(_ => _) // disable jika kamu tidak suka dengan ini
+        await this.setStatus(`Aktif selama ${uptime} | Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} | stikerinbot oleh ariffb`).catch(_ => _)
         setting.status = new Date() * 1
     }
 
