@@ -11,9 +11,8 @@ handler.all = async function (m) {
     if (new Date - user.pc < 86400000) return // setiap 24 jam sekali
     await this.sendButton(m.chat, `
 Hai, ${ucapan()}
-
-${user.banned ? 'you are banned' : 'Is there anything I can help you with?'}
-`.trim(), '© stikerin', user.banned ? 'Owner' : 'Menu', user.banned ? ',owner' : ',?', m)
+${user.banned ? 'youre banned' : 'Im Eva, one of the Whatsapp Bots. please dont spam/call/ask to save to this number. Can I help you?'}
+`.trim(), watermark, user.banned ? 'Bot Owner' : 'Menu', user.banned ? ',owner' : ',?', m)
     user.pc = new Date * 1
 }
 
@@ -28,10 +27,10 @@ function ucapan() {
         res = "Good afternoon"
     }
     if (time >= 15) {
-        res = "Good Evening"
+        res = "Good afternoon"
     }
     if (time >= 18) {
-        res = "Good Night"
+        res = "Good night"
     }
     return res
 }
