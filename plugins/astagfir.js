@@ -1,6 +1,6 @@
 let handler = async (m) => {
     let user = db.data.users[m.sender]
-    if (user.warning == 0) throw 'Kamu tidak memiliki warning!'
+    if (user.warning == 0) throw 'You have a unique warning!'
 
     let waktu = user.lastIstigfar + 180000
     if (new Date - user.lastIstigfar < 180000) throw `You can use this command again after ${msToTime(waktu - new Date())}`
