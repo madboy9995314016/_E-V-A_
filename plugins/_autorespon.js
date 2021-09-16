@@ -16,27 +16,30 @@ handler.all = async function (m, { isBlocked }) {
             await this.send2Button(m.chat,
                 isBanned ? 'Eva is sleeping' : banned ? 'you are banned' : 'Eva is here',
                 watermark,
-                isBanned ? 'Unban' : banned ? 'Owner Bot' : 'Menu',
+                isBanned ? 'Unban' : banned ? 'Bot Owner' : 'Menu',
                 isBanned ? '.unban' : banned ? '.owner' : '.?',
-                m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'SUPPORT',
-                m.isGroup ? '.ban' : isBanned ? '.unban' : '.support', m)
+                m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'Owner',
+                m.isGroup ? '.ban' : isBanned ? '.unban' : '.owner', m)
         }
     } catch (e) {
         return
     }
 
     // ketika ada yang invite/kirim link grup di chat pribadi
-    if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Open this link')) && !m.isBaileys && !m.isGroup) {
-        this.sendButton(m.chat, `┌〔 Invite Bot to Group 〕
-
-`.trim(), watermark, 'developer', ',owner', m)
+    if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Buka tautan ini')) && !m.isBaileys && !m.isGroup) {
+        this.sendButton(m.chat, `┌〔 Invite Bots to Group 〕
+├ 3 Days / FREE
+├ 7 Days / FREE
+├ 30 Days / FREE
+└────
+`.trim(), watermark, 'Bot Owner', ',owner', m)
     }
 
     // salam
-    let reg = /|Peace be upon you|Peace be upon you)/i
+    let reg = /(Greetings|Peace be upon you|Peace be upon you)/i
     let isSalam = reg.exec(m.text)
     if (isSalam && !m.fromMe) {
-        m.reply(`وَعَلَيْكُمْ السَّلاَمُ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ\n_wa\'alaikumussalam wr.wb._`)
+        m.reply(`Peace be upon you and God's mercy and blessings\n_wa\'`)
     }
 
     // backup db
@@ -59,7 +62,7 @@ handler.all = async function (m, { isBlocked }) {
     if (new Date() * 1 - setting.status > 1000) {
         let _uptime = process.uptime() * 1000
         let uptime = clockString(_uptime)
-        // await this.setStatus(`Aktif selama ${uptime} | Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} | Eva bot by SudoAnirudh`).catch(_ => _) // disable jika kamu tidak suka dengan ini
+        // await this.setStatus(`Aktif selama ${uptime} | Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} | Haruno bot oleh Fadli`).catch(_ => _) // disable jika kamu tidak suka dengan ini
         setting.status = new Date() * 1
     }
 
