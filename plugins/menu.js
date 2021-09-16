@@ -8,33 +8,43 @@ const defaultMenu = {
   before: `
 ┌─〔 %me 〕
 ├ Hai, %name!
-├ Date: *%week %weton, %date*
-├ Time: *%time*
 │
+├ Tersisa *%limit Limit*
+├ Role *%role*
+├ Level *%level (%exp / %maxexp)* [%xp4levelup]
+├ %totalexp XP secara Total
+│ 
+├ Tanggal: *%week %weton, %date*
+├ Tanggal Islam: *%dateIslamic*
+├ Waktu: *%time*
+│
+├ Uptime: *%uptime (%muptime)*
+├ Database: %rtotalreg dari %totalreg
 ├ Github:
 ├ %github
 └────
 %readmore`.trimStart(),
   header: '┌─〔 %category 〕',
-  body: '├ %cmd',
+  body: '├ %cmd %islimit %isPremium',
   footer: '└────\n',
   after: `
-*%npmname@*
+*%npmname@^%version*
 ${'```%npmdesc```'}
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'xp', 'stiker','quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio','info','owner']
+  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
     'main': 'Utama',
     'game': 'Game',
     'xp': 'Exp & Limit',
     'sticker': 'Stiker',
+    'kerang': 'Kerang Ajaib',
     'quotes': 'Quotes',
-    'admin': `Admin ${global.opts['restrict'] ? '' : '(Disabled)'}`,
+    'admin': `Admin ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`,
     'group': 'Grup',
     'premium': 'Premium',
     'internet': 'Internet',
@@ -46,8 +56,11 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     'database': 'Database',
     'vote': 'Voting',
     'absen': 'Absen',
+    'quran': 'Al Qur\'an',
+    'audio': 'Pengubah Suara',
+    'jadibot': 'Jadi Bot',
     'info': 'Info',
-    '': 'No Category',
+    '': 'Tanpa Kategori',
   }
   if (teks == 'game') tags = {
     'game': 'Game'
@@ -58,11 +71,14 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'stiker') tags = {
     'sticker': 'Stiker'
   }
+  if (teks == 'kerangajaib') tags = {
+    'kerang': 'Kerang Ajaib'
+  }
   if (teks == 'quotes') tags = {
     'quotes': 'Quotes'
   }
   if (teks == 'admin') tags = {
-    'admin': `Admin ${global.opts['restrict'] ? '' : '(Disabled)'}`
+    'admin': `Admin ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`
   }
   if (teks == 'grup') tags = {
     'group': 'Grup'
@@ -94,6 +110,21 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'vote') tags = {
     'vote': 'Voting',
     'absen': 'Absen'
+  }
+  if (teks == 'quran') tags = {
+    'quran': 'Al Qur\'an'
+  }
+  if (teks == 'audio') tags = {
+    'audio': 'Pengubah Suara'
+  }
+  if (teks == 'jadibot') tags = {
+    'jadibot': 'Jadi Bot'
+  }
+  if (teks == 'info') tags = {
+    'info': 'Info'
+  }
+  if (teks == 'tanpakategori') tags = {
+    '': 'Tanpa Kategori'
   }
   if (teks == 'owner') tags = {
     'owner': 'Owner',
@@ -158,14 +189,14 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
         "listMessage": {
           "title": `${ucapan()}, ${name}`.trim(),
-          "description": "© Eva",
-          "buttonText": "Click  Here",
+          "description": "© stikerin",
+          "buttonText": "Klik Disini",
           "listType": "SINGLE_SELECT",
           "sections": [
             {
               "rows": [
                 {
-                  "title": `All Commands`,
+                  "title": `Semua Perintah`,
                   "description": "",
                   "rowId": ".? all"
                 }, {
@@ -182,6 +213,10 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "title": "Stiker",
                   "description": "",
                   "rowId": ".? stiker"
+                }, {
+                  "title": "Kerang Ajaib",
+                  "description": "",
+                  "rowId": ".? kerangajaib"
                 }, {
                   "title": "Quotes",
                   "description": "",
@@ -227,9 +262,29 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "description": "",
                   "rowId": ".? database"
                 }, {
+                  "title": "Vote & Absen",
+                  "description": "",
+                  "rowId": ".? vote"
+                }, {
+                  "title": "Al-Qur\'an",
+                  "description": "",
+                  "rowId": ".? quran"
+                }, {
+                  "title": "Pengubah Suara",
+                  "description": "",
+                  "rowId": ".? audio"
+                }, {
+                  "title": "Jadi Bot",
+                  "description": "",
+                  "rowId": ".? jadibot"
+                }, {
                   "title": "Info",
                   "description": "",
                   "rowId": ".? info"
+                }, {
+                  "title": "Tanpa Kategori",
+                  "description": "",
+                  "rowId": ".? tanpakategori"
                 }, {
                   "title": "Owner",
                   "description": "",
@@ -287,7 +342,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     let header = conn.menu.header || defaultMenu.header
     let body = conn.menu.body || defaultMenu.body
     let footer = conn.menu.footer || defaultMenu.footer
-    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Presented by https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Dipersembahkan oleh https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
     let _text = [
       before,
       ...Object.keys(tags).map(tag => {
@@ -316,19 +371,19 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       exp: exp - min,
       maxexp: xp,
       totalexp: exp,
-      xp4levelup: max - exp <= 0 ? `Ready for *${_p}levelup*` : `${max - exp} More XP for levelup`,
+      xp4levelup: max - exp <= 0 ? `Siap untuk *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
       level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send2ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), 'made with ❤️ by Anirudh', 'Owner Bot', '.owner', 'All Commands', '.all', m)
+    await conn.send2ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), 'made with ❤️ by ariffb', 'Pemilik Bot', '.owner', 'Donasi', '.donasi', m)
   } catch (e) {
-    conn.reply(m.chat, 'Sorry, the menu is in error', m)
+    conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
   }
 }
-handler.help = ['menu', 'help','list', '?']
+handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
 handler.command = /^(menu|help|\?)$/i
 handler.owner = false
@@ -355,19 +410,19 @@ function clockString(ms) {
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 function ucapan() {
-  const time = moment.tz('Asia/Kolkata').format('HH')
-  res = "Good morning"
+  const time = moment.tz('Asia/Jakarta').format('HH')
+  res = "Selamat dinihari"
   if (time >= 4) {
-    res = "Good morning"
+    res = "Selamat pagi"
   }
   if (time > 10) {
-    res = "Good afternoon"
+    res = "Selamat siang"
   }
   if (time >= 15) {
-    res = "Good Evening"
+    res = "Selamat sore"
   }
   if (time >= 18) {
-    res = "Good night"
+    res = "Selamat malam"
   }
   return res
 }
