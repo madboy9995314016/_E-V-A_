@@ -227,10 +227,6 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "description": "",
                   "rowId": ".? database"
                 }, {
-                  "title": "Al-Qur\'an",
-                  "description": "",
-                  "rowId": ".? quran"
-                }, {
                   "title": "Info",
                   "description": "",
                   "rowId": ".? info"
@@ -320,7 +316,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       exp: exp - min,
       maxexp: xp,
       totalexp: exp,
-      xp4levelup: max - exp <= 0 ? `Siap untuk *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
+      xp4levelup: max - exp <= 0 ? `Ready for *${_p}levelup*` : `${max - exp} More XP for levelup`,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
       level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
@@ -332,7 +328,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     throw e
   }
 }
-handler.help = ['menu', 'help','list,' '?']
+handler.help = ['menu', 'help','list', '?']
 handler.tags = ['main']
 handler.command = /^(menu|help|\?)$/i
 handler.owner = false
@@ -359,19 +355,19 @@ function clockString(ms) {
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 function ucapan() {
-  const time = moment.tz('Asia/Jakarta').format('HH')
-  res = "Selamat dinihari"
+  const time = moment.tz('Asia/Kolkata').format('HH')
+  res = "Good morning"
   if (time >= 4) {
-    res = "Selamat pagi"
+    res = "Good morning"
   }
   if (time > 10) {
-    res = "Selamat siang"
+    res = "Good afternoon"
   }
   if (time >= 15) {
-    res = "Selamat sore"
+    res = "Good Evening"
   }
   if (time >= 18) {
-    res = "Selamat malam"
+    res = "Good night"
   }
   return res
 }
