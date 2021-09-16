@@ -9,6 +9,7 @@ const defaultMenu = {
   before: `
 ┌─〔 %me 〕
 ├ Hai, %name!
+├ Date: *%date*
 ├ Time: *%time*
 │
 ├ Github:
