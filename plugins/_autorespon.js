@@ -1,4 +1,3 @@
-  
 let fs = require('fs')
 let handler = m => m
 
@@ -15,25 +14,30 @@ handler.all = async function (m, { isBlocked }) {
     try {
         if (m.mentionedJid.includes(this.user.jid) && m.isGroup) {
             await this.send2Button(m.chat,
-                isBanned ? 'Eva is sleeping' : banned ? 'you are banned' : 'Eva is here',
-                watermark,
-                isBanned ? 'Unban' : banned ? 'Owner Bot' : 'Menu',
+                isBanned ? 'Eva is not active' : banned ? 'you are banned' : 'Eva here',
+                '© stikerin',
+                isBanned ? 'Unban' : banned ? 'Bot Owner' : 'Menu',
                 isBanned ? '.unban' : banned ? '.owner' : '.?',
-                m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'SUPPORT',
-                m.isGroup ? '.ban' : isBanned ? '.unban' : '.support', m)
+                m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'Support',
+                m.isGroup ? '.ban' : isBanned ? '.unban' : '.owner', m)
         }
     } catch (e) {
         return
     }
 
     // ketika ada yang invite/kirim link grup di chat pribadi
-    if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Open this link')) && !m.isBaileys && !m.isGroup) {
-        this.sendButton(m.chat, `┌〔 Invite Bot to Group 〕
-`.trim(), watermark, 'developer', ',owner', m)
+    if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Buka tautan ini')) && !m.isBaileys && !m.isGroup) {
+        this.sendButton(m.chat, `┌〔 Undang Bot ke Grup 〕
+├ 
+├ 
+└────
+
+https://github.com/SudoAnirudh/_E-V-A_
+`.trim(), '© Eva', 'Bot Owner', ',owner', m)
     }
 
     // salam
-    let reg = /|Peace be upon you|Peace be upon you)/i
+    let reg = /(ass?alam|اَلسَّلاَمُ عَلَيْكُمْ|السلام عليکم)/i
     let isSalam = reg.exec(m.text)
     if (isSalam && !m.fromMe) {
         m.reply(`وَعَلَيْكُمْ السَّلاَمُ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ\n_wa\'alaikumussalam wr.wb._`)
@@ -59,7 +63,7 @@ handler.all = async function (m, { isBlocked }) {
     if (new Date() * 1 - setting.status > 1000) {
         let _uptime = process.uptime() * 1000
         let uptime = clockString(_uptime)
-        // await this.setStatus(`Aktif selama ${uptime} | Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'} | Eva bot by SudoAnirudh`).catch(_ => _) // disable jika kamu tidak suka dengan ini
+        await this.setStatus(`Active during ${uptime} | Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Group Only' : 'Public'} | Eva by Anirudh`).catch(_ => _)
         setting.status = new Date() * 1
     }
 
