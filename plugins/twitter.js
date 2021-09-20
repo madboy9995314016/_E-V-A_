@@ -1,7 +1,7 @@
 const { twitter } = require('../lib/scrape')
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-  if (!args[0]) throw `*This command to download twitter media with link*\n\ncontoh:\n${usedPrefix + command} https://twitter.com/`
-  if (!args[0].match(/(https:\/\/.*twitter.com)/gi)) throw `*Wrong link! This command to download twitter media with link*\n\ncontoh:\n${usedPrefix + command} https://twitter.com/`
+  if (!args[0]) throw `*This command to download twitter media with link*\n\nEXAMPLE:\n${usedPrefix + command} https://twitter.com/`
+  if (!args[0].match(/(https:\/\/.*twitter.com)/gi)) throw `*Wrong link! This command to download twitter media with link*\n\nEXAMPLE:\n${usedPrefix + command} https://twitter.com/`
 
   twitter(args[0]).then(async res => {
     let twit = JSON.stringify(res)

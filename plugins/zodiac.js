@@ -2,7 +2,7 @@ let handler = (m, { usedPrefix, command, text }) => {
     if (!text) throw `Example:\n${usedPrefix + command} 2002 02 25`
 
     const date = new Date(text)
-    if (date == 'Invalid Date') throw `contoh:\n${usedPrefix + command} 2002 02 25`
+    if (date == 'Invalid Date') throw `Example:\n${usedPrefix + command} 2002 02 25`
     const d = new Date()
     const [tahun, bulan, tanggal] = [d.getFullYear(), d.getMonth() + 1, d.getDate()]
     const birth = [date.getFullYear(), date.getMonth() + 1, date.getDate()]

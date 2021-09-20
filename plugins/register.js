@@ -3,7 +3,7 @@ let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
 let handler = async function (m, { text, usedPrefix, command }) {
   let user = global.db.data.users[m.sender]
   if (user.registered === true) throw `You are already registered\nWant to re-register? ${usedPrefix}unreg <SERIAL NUMBER>`
-  if (!Reg.test(text)) throw `contoh:\n*${usedPrefix + command} name.age*`
+  if (!Reg.test(text)) throw `Example:\n*${usedPrefix + command} name.age*`
   let [_, name, splitter, age] = text.match(Reg)
   if (!name) throw 'Name cannot be empty (Alphanumeric)'
   if (!age) throw 'Age cant be empty (Number)'

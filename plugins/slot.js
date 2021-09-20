@@ -1,6 +1,6 @@
 let handler = async (m, { args, usedPrefix, command }) => {
     let fa = `
-contoh:
+Example:
 ${usedPrefix + command} 100
 
 means you bet 100 XP.

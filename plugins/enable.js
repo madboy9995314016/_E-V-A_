@@ -229,7 +229,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 ├ simi
 ├ welcome
 └────
-contoh:
+Example:
 ${usedPrefix}on welcome
 ${usedPrefix}off welcome
 `.trim()

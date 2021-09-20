@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const { MessageType } = require('@adiwajshing/baileys')
 const { sticker } = require('../lib/sticker')
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) throw `uhm.. where's the url??\n\ncontoh:\n${usedPrefix + command} https://t.me/addstickers/`
+    if (!args[0]) throw `uhm.. where's the url??\n\nExample:\n${usedPrefix + command} https://t.me/addstickers/`
     if (!args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) throw `url salah`
     let packName = args[0].replace("https://t.me/addstickers/", "")
 

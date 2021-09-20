@@ -4,7 +4,7 @@ const tld = 'en'
 
 let handler = async (m, { args, usedPrefix, command }) => {
     let err = `
-Contoh:
+EXAMPLE:
 ${usedPrefix + command} <lang> [text]
 ${usedPrefix + command} id your messages
 

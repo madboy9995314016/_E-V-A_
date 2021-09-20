@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	}[(args[0] || '')]
 	if (isClose === undefined) {
 		await conn.send2Button(m.chat, `
-contoh:
+Example:
 ${usedPrefix + command} tutup
 ${usedPrefix + command} buka
 	`.trim(), watermark, 'Buka', ',grup 1', 'Tutup', ',grup 0')
