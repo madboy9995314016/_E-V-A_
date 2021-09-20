@@ -18,10 +18,10 @@ let handler = async (m, { conn, usedPrefix }) => {
     })
     let list = absen.map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')
     let caption = `
-Tanggal: ${date}
+Date: ${date}
 ${conn.absen[id][2]}
 
-┌〔 daftar absen 〕
+┌〔 absent list 〕
 │ 
 ├ Total: ${absen.length}
 ${list}

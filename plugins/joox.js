@@ -23,7 +23,7 @@ Duration: ${duration}
     conn.sendFile(m.chat, mp3_url, 'error.mp3', '', m, 0, { asDocument: global.db.data.chats[m.chat].useDocument, mimetype: 'audio/mp4' })
 
 }
-handler.help = ['joox'].map(v => v + ' <judul>')
+handler.help = ['joox'].map(v => v + ' <title>')
 handler.tags = ['downloader']
 handler.command = /^joox$/i
 

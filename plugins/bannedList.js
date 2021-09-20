@@ -10,7 +10,7 @@ let handler = async (m, { conn, isOwner }) => {
 └────
 
 ┌〔 List of Banned Users 〕
-├ Total : ${users.length} Pengguna${users ? '\n' + users.map(([jid], i) => `
+├ Total : ${users.length} User${users ? '\n' + users.map(([jid], i) => `
 ├ ${i + 1}. ${conn.getName(jid) == undefined ? 'Unknown' : conn.getName(jid)}
 ├ ${isOwner ? '@' + jid.split`@`[0] : jid}
 `.trim()).join('\n') : ''}

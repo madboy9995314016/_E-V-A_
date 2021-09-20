@@ -32,9 +32,9 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
 *Server y2mate:* ${usedServer}
 `.trim(), watermark, 'Audio', `.yta ${vid.url}`, 'Video', `.yt ${vid.url}`)
 }
-handler.help = ['play'].map(v => v + ' <query>')
+handler.help = ['song'].map(v => v + ' <query>')
 handler.tags = ['downloader']
-handler.command = /^(p|play)$/i
+handler.command = /^(s|song)$/i
 
 handler.exp = 0
 
