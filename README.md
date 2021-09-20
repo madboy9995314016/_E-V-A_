@@ -4,7 +4,7 @@
 <h1 align="center">Eva</h1>
 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SudoAnirudh/_E-V-A_)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/madboy9995314016/_E-V-A_)
 
 [![Grup WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/message/3UE3B6RT7XTLE1)
 
@@ -15,14 +15,14 @@ apt install git -y
 apt install nodejs -y
 apt install ffmpeg -y
 apt install imagemagick -y
-git clone https://github.com/SudoAnirudh/_E-V-A_
+git clone https://github.com/madboy9995314016/_E-V-A_
 cd _E-V-A_
 npm install
 npm start
 ```
 
 ```bash
-git clone https://github.com/SudoAnirudh/_E-V-A_
+git clone https://github.com/madboy9995314016/_E-V-A_
 cd _E-V-A_
 npm install
 npm update
