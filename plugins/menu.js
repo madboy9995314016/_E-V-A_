@@ -12,8 +12,8 @@ const defaultMenu = {
 ├ Date: *%date*
 ├ Time: *%time*
 │
-├ Github:
-├ %github
+├ Github:SudoAnirudh
+├ 
 └────
 %readmore`.trimStart(),
   header: '┌─〔 %category 〕',
